@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34902.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7C972280-7499-4C52-A375-A8207826C038}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A8029F22-A099-4468-86A3-9323FCE10312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5D810AF1-CCC3-4D64-AC8C-DE41CF54DEC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{8D8E27AF-F3AF-4A15-95E1-27E08E8DDB4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignTechPLMIntegrationPro.Application", "Core\DesignTechPLMIntegrationPro.Application\DesignTechPLMIntegrationPro.Application.csproj", "{FABB1AFC-B56F-4A85-8051-47FA9899D7C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignTechPLMIntegrationPro.Domain", "Core\DesignTechPLMIntegrationPro.Domain\DesignTechPLMIntegrationPro.Domain.csproj", "{065BEA71-243E-4D48-AF6A-C942AB2E5B5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignTechPLMIntegrationPro.Persistence", "Infrastructure\DesignTechPLMIntegrationPro.Persistence\DesignTechPLMIntegrationPro.Persistence.csproj", "{B7C35FFF-2872-495D-8701-1780F7B1160E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{276D6E39-4C0D-455E-BDA0-C13268D39FD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{BB95F7E8-AAFB-4DCF-9B68-B2D538DABFFF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DesignTechPLMIntegrationPro.Setup", "Setup\DesignTechPLMIntegrationPro.Setup\DesignTechPLMIntegrationPro.Setup.vdproj", "{CCC96A7F-2973-45C6-986C-3BCA053DEC20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignTechPLMIntegrationPro.WinForm", "Presentation\Forms\DesignTechPLMIntegrationPro.WinForm\DesignTechPLMIntegrationPro.WinForm.csproj", "{D8D41CF0-2AD5-48AB-84B1-32D543704264}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FABB1AFC-B56F-4A85-8051-47FA9899D7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABB1AFC-B56F-4A85-8051-47FA9899D7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABB1AFC-B56F-4A85-8051-47FA9899D7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABB1AFC-B56F-4A85-8051-47FA9899D7C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065BEA71-243E-4D48-AF6A-C942AB2E5B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065BEA71-243E-4D48-AF6A-C942AB2E5B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065BEA71-243E-4D48-AF6A-C942AB2E5B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065BEA71-243E-4D48-AF6A-C942AB2E5B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C35FFF-2872-495D-8701-1780F7B1160E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C35FFF-2872-495D-8701-1780F7B1160E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C35FFF-2872-495D-8701-1780F7B1160E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C35FFF-2872-495D-8701-1780F7B1160E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC96A7F-2973-45C6-986C-3BCA053DEC20}.Debug|Any CPU.ActiveCfg = Debug
+		{CCC96A7F-2973-45C6-986C-3BCA053DEC20}.Release|Any CPU.ActiveCfg = Release
+		{D8D41CF0-2AD5-48AB-84B1-32D543704264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D41CF0-2AD5-48AB-84B1-32D543704264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D41CF0-2AD5-48AB-84B1-32D543704264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D41CF0-2AD5-48AB-84B1-32D543704264}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FABB1AFC-B56F-4A85-8051-47FA9899D7C4} = {7C972280-7499-4C52-A375-A8207826C038}
+		{065BEA71-243E-4D48-AF6A-C942AB2E5B5F} = {7C972280-7499-4C52-A375-A8207826C038}
+		{B7C35FFF-2872-495D-8701-1780F7B1160E} = {A8029F22-A099-4468-86A3-9323FCE10312}
+		{276D6E39-4C0D-455E-BDA0-C13268D39FD5} = {5D810AF1-CCC3-4D64-AC8C-DE41CF54DEC3}
+		{BB95F7E8-AAFB-4DCF-9B68-B2D538DABFFF} = {5D810AF1-CCC3-4D64-AC8C-DE41CF54DEC3}
+		{CCC96A7F-2973-45C6-986C-3BCA053DEC20} = {8D8E27AF-F3AF-4A15-95E1-27E08E8DDB4C}
+		{D8D41CF0-2AD5-48AB-84B1-32D543704264} = {276D6E39-4C0D-455E-BDA0-C13268D39FD5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3285EC5-3D61-4B58-BA38-C881339FEA7C}
+	EndGlobalSection
+EndGlobal
