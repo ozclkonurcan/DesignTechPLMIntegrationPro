@@ -16,7 +16,7 @@ namespace DesignTechPLMIntegrationPro.Persistence.Repositories.WTPart.ResetPart
     public class ResetPartRepository : IResetPartService
     {
 
-
+         
         private const string FilePath = "deneme.json";
         private readonly IDbConnection _dbConnection;
         private readonly ILogService _logService;
