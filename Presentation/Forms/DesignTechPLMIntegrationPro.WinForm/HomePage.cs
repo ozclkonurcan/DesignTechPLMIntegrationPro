@@ -1,8 +1,9 @@
-﻿using DesignTechPLMIntegrationPro.Application.Interfaces.CAD.PDF;
-using DesignTechPLMIntegrationPro.Application.Interfaces.Log;
-using DesignTechPLMIntegrationPro.Application.Interfaces.WTPart.Alternate;
-using DesignTechPLMIntegrationPro.Application.Interfaces.WTPart.State;
+﻿using DesignTechPLMIntegrationPro.Application.Interfaces.EntegrasyonModulu.CAD.PDF;
+using DesignTechPLMIntegrationPro.Application.Interfaces.EntegrasyonModulu.WTPart.Alternate;
+using DesignTechPLMIntegrationPro.Application.Interfaces.EntegrasyonModulu.WTPart.State;
+using DesignTechPLMIntegrationPro.Application.Interfaces.LogModulu.Log;
 using DesignTechPLMIntegrationPro.WinForm.Pages;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,9 +91,9 @@ namespace DesignTechPLMIntegrationPro.WinForm
 
 
                 await Task.WhenAll(
-           //_stateService.RELEASED(),
-           //_stateService.INWORK(),
-           //_stateService.CANCELLED(),
+           _stateService.RELEASED(),
+           _stateService.INWORK(),
+           _stateService.CANCELLED(),
            _pdfService.SendToCadPDF()
            //_alternateStateService.AlternateState(),
            );
@@ -117,9 +118,9 @@ namespace DesignTechPLMIntegrationPro.WinForm
 
 
                 await Task.WhenAll(
-           //_stateService.RELEASED(),
-           //_stateService.INWORK(),
-           //_stateService.CANCELLED(),
+           _stateService.RELEASED(),
+           _stateService.INWORK(),
+           _stateService.CANCELLED(),
            _pdfService.SendToCadPDF()
            //_alternateStateService.AlternateState(),
            );
@@ -144,7 +145,70 @@ namespace DesignTechPLMIntegrationPro.WinForm
 
         private void lOGAyarlarıToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
+
+
+
+        //FTPRefleshPDFFile(await DownloadPdfAsync(pdfUrl));
+
+
+
+        //private void FTPRefleshPDFFile(byte[] pdfFile)
+        //{
+        //    //string sunucuAdresi = "192.168.1.11"; // Sunucunuzun IP adresi
+        //    //string kullaniciAdi = "DESIGNTECH\\PLM-1"; // Kullanıcı adı
+        //    //string sifre = "Des.23!Tech"; // Şifre
+        //    // Sunucu ayarları
+        //    string serverAddress = "192.168.1.11";
+        //    int port = 22; // SSH port
+        //    string username = "DESIGNTECH\\PLM-1";
+        //    string password = "Des.23!Tech";
+
+        //    // Dosya yolları
+        //    string remoteFilePath = "/path/to/application/folder/my_file.pdf"; // Sunucudaki dosya yolu
+        //    string localFilePath = @"C:\Users\tronu\Desktop\my_file.pdf"; // Yerel dosya yolu
+
+        //    ReplaceFileOnServer(serverAddress, port, username, password, remoteFilePath, localFilePath);
+
+
+        //}
+
+        //public static void ReplaceFileOnServer(string serverAddress, int port, string username, string password,
+        //                           string remoteFilePath, string localFilePath)
+        //{
+        //    try
+        //    {
+        //        // SFTP bağlantısı kurma
+        //        using (var client = new SftpClient(serverAddress, port, username, password))
+        //        {
+        //            // Bağlantı kurma denemesi
+        //            client.Connect();
+
+        //            if (client.IsConnected)
+        //            {
+        //                Console.WriteLine("Sunucuya başarılı bir şekilde bağlanıldı.");
+
+        //                // Uzaktaki dosyayı silme
+        //                client.DeleteFile(remoteFilePath);
+
+        //                // Yerel dosyayı sunucuya kopyalama
+        //                //client.UploadFile(localFilePath, remoteFilePath);
+
+        //                Console.WriteLine("Dosya başarıyla değiştirildi.");
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine("Sunucuya bağlanılamadı.");
+        //            }
+
+        //            client.Disconnect();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Hata oluştu: {ex.Message}");
+        //    }
+        //}
+
     }
 }

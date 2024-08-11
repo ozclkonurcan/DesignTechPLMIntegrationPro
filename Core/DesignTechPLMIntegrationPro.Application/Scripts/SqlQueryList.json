@@ -1,0 +1,87 @@
+[
+  {
+    "Name": "Part_Document",
+    "Type": "Trigger",
+    "Script": "
+CREATE TRIGGER [{schema}].[Part_Document]
+ON [{schema}].[WTPartReferenceLink]
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @Part_ID BIGINT,
+			@PartMasterID BIGINT,
+			@Part_Number NVARCHAR(40),
+			@DocType_ID BIGINT,
+			@DocMaster_ID BIGINT,
+			@DocID BIGINT,
+			@DocNumber NVARCHAR(32),
+			@Eklenti NVARCHAR(50),
+			@EklemeDurumu TINYINT,
+			@Kontrol INT
+
+	SELECT	@Part_ID=idA3A5, @DocMaster_ID = idA3B5	FROM inserted
+
+	SELECT @PartMasterID = idA3masterReference FROM {schema}.WTPart WHERE idA2A2 = @Part_ID
+
+	SELECT @Part_Number= WTPartNumber FROM {schema}.WTPartMaster WHERE idA2A2=@PartMasterID
+	
+	SELECT @DocNumber = WTDocumentNumber FROM {schema}.WTDocumentMaster	WHERE idA2A2 = @DocMaster_ID
+	
+	SELECT @DocType_ID=idA2typeDefinitionReference, @DocID=idA2A2 FROM {schema}.WTDocument WHERE idA3masterReference = @DocMaster_ID
+		   	 
+	SELECT  @Eklenti = Mesaj, @EklemeDurumu = EklemeDurumu FROM {schema}.Des_PartDocumentBagla WHERE WTDocumentTypeID = @DocType_ID
+
+	SELECT @Kontrol =  COUNT(*) FROM {schema}.Des_PartDocumentBagla WHERE WTDocumentTypeID = @DocType_ID
+	
+	IF @Kontrol>=0
+		BEGIN
+	
+		--INSERT INTO dbo.Des_Test (Part_ID,Part_Number,PartMasterID,DocType_ID,DocMaster_ID,DocNumber,Eklenti,EklemeDurumu,Kontrol) 
+		--VALUES (@Part_ID,@Part_Number,@PartMasterID,@DocType_ID,@DocMaster_ID,@DocNumber,@Eklenti,@EklemeDurumu,@Kontrol)
+
+		IF @EklemeDurumu = 0
+			BEGIN
+				UPDATE {schema}.WTDocumentMaster 
+				SET WTDocumentNumber = @DocNumber + @Eklenti 
+				WHERE idA2A2 = @DocMaster_ID
+
+				INSERT INTO dbo.Des_Test (Part_ID,Part_Number,PartMasterID,DocType_ID,DocMaster_ID,DocNumber,Eklenti,EklemeDurumu,Kontrol) 
+				VALUES (@Part_ID,@Part_Number,@PartMasterID,@DocType_ID,@DocMaster_ID,@DocNumber,@Eklenti,@EklemeDurumu,@Kontrol)
+		END
+		ELSE IF @EklemeDurumu = 1
+			BEGIN
+				UPDATE {schema}.WTDocumentMaster 
+				SET WTDocumentNumber = @Eklenti + @DocNumber 
+				WHERE idA2A2 = @DocMaster_ID
+
+				INSERT INTO dbo.Des_Test (Part_ID,Part_Number,PartMasterID,DocType_ID,DocMaster_ID,DocNumber,Eklenti,EklemeDurumu,Kontrol) 
+				VALUES (@Part_ID,@Part_Number,@PartMasterID,@DocType_ID,@DocMaster_ID,@DocNumber,@Eklenti,@EklemeDurumu,@Kontrol)
+			END
+
+		END
+
+	
+
+	--UPDATE {schema}.WTDocumentMaster SET WTDocumentNumber = @Eklenti + @DocNumber WHERE idA2A2 = @DocMaster_ID
+	-- INSERT INTO {schema}.Des_PartDocChange (Number, Eklenti) VALUES (@DocNumber, @Eklenti)
+
+END
+"
+  },
+  {
+    "Name": "Des_PartDocumentBagla",
+    "Type": "Table",
+    "Script": "
+   CREATE TABLE {schema}.[Des_PartDocumentBagla](
+	[PartDocID] [int] IDENTITY(1,1) NOT NULL,
+	[WTDocumentTypeID] [int] NULL,
+[WTDocumentTypeName] [nvarchar](MAX) NULL,
+	[Mesaj] [nvarchar](150) NULL,
+ [EklemeDurumu] [tinyint] NULL,
+ CONSTRAINT [PK_Des_PartDocumentBagla_1] PRIMARY KEY CLUSTERED 
+(
+	[PartDocID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]"
+  }
+]

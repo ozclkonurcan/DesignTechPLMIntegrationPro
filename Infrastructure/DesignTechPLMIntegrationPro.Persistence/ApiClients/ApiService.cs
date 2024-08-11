@@ -1,5 +1,4 @@
-﻿using DesignTechPLMIntegrationPro.Application.Interfaces.Log;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using DesignTechPLMIntegrationPro.Application.Interfaces.LogModulu.Log;
 
 namespace DesignTechPLMIntegrationPro.Persistence.ApiClients
 {
